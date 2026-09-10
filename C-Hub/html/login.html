@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login · Nova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body data-page="login">
+
+  <div class="bg" aria-hidden="true"></div>
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <main class="card" role="main">
+    <div class="card-glow" aria-hidden="true"></div>
+
+    <div class="badge" id="badge" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+      Admin Console
+    </div>
+
+    <div class="logo" aria-hidden="true">
+      <svg class="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4 7.2 16.9l.9-5.4L4.2 7.7l5.4-.8L12 2z"/>
+      </svg>
+      <svg class="icon-admin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+    </div>
+
+    <h1 id="login-title" tabindex="-1">Welcome <span class="grad">back</span></h1>
+    <p class="subtitle" id="subtitle">Log in to your Nova workspace to pick up where you left off.</p>
+
+    <form id="login-form" novalidate>
+      <!-- Email / Phone -->
+      <div class="field-group">
+        <label for="login-contact" id="contact-label">Email or phone</label>
+        <div class="input-wrap" id="wrap-login-contact">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="3"/>
+            <path d="m2 7 8.6 5.7a2.5 2.5 0 0 0 2.8 0L22 7"/>
+          </svg>
+          <input id="login-contact" name="contact" type="text" autocomplete="username"
+                 placeholder="you@example.com or +1 555 000 1234" aria-describedby="login-contact-msg" />
+        </div>
+        <p class="msg" id="login-contact-msg" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- Password -->
+      <div class="field-group">
+        <label for="login-password">Password</label>
+        <div class="input-wrap" id="wrap-login-password">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="10.5" width="16" height="10.5" rx="2.5"/>
+            <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/>
+          </svg>
+          <input id="login-password" name="password" type="password" autocomplete="current-password"
+                 placeholder="Enter your password" aria-describedby="login-password-msg" />
+          <button type="button" class="toggle-pass" data-target="login-password" aria-pressed="false" aria-label="Show password">
+            <svg class="eye-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17.94 17.94A10.5 10.5 0 0 1 12 19c-6.5 0-10-7-10-7a18.5 18.5 0 0 1 5.06-5.94"/>
+              <path d="M9.9 4.24A9.7 9.7 0 0 1 12 5c6.5 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19"/>
+              <path d="m2 2 20 20"/>
+            </svg>
+          </button>
+        </div>
+        <p class="msg" id="login-password-msg" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- Remember me + forgot -->
+      <div class="row">
+        <label class="check">
+          <input type="checkbox" id="remember" name="remember" />
+          Remember me
+        </label>
+        <a href="login.html#forgot" class="forgot" id="forgot-user">Forgot password?</a>
+      </div>
+
+      <div class="banner" id="banner" role="alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 8v4"/>
+          <path d="M12 16h.01"/>
+        </svg>
+        <span id="banner-text"></span>
+      </div>
+
+      <button type="submit" class="btn" id="login-btn" disabled>Log In</button>
+    </form>
+
+    <div class="divider">or</div>
+
+    <button type="button" class="admin-opt" id="admin-toggle" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+      <span id="admin-toggle-label">Admin Login</span>
+    </button>
+
+    <p class="alt">
+      <span id="alt-text">New to Nova?</span> <a href="index.html">Create account</a>
+    </p>
+
+    <p class="legal">Protected by enterprise-grade encryption. Privacy Policy</p>
+  </main>
+
+<script src="../js/auth.js?v=2"></script>
+<script src="../js/script.js?v=5"></script>
+</body>
+</html>

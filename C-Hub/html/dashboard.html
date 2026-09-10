@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tournament Dashboard · Nova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/styles.css" />
+<link rel="stylesheet" href="../css/dashboard.css?v=4" />
+</head>
+<body data-page="dashboard">
+
+  <div class="bg" aria-hidden="true"></div>
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <div class="shell">
+
+    <!-- ======================= SIDEBAR ======================= -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+        </span>
+        <span class="brand-name">Nova<em>Tournaments</em></span>
+      </div>
+
+      <nav class="nav" aria-label="Dashboard sections">
+        <button class="nav-item active" data-action="nav" data-view="tournaments">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          Tournament
+        </button>
+        <button class="nav-item" data-action="nav" data-view="teams">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Teams
+        </button>
+        <button class="nav-item" data-action="nav" data-view="money" data-requires-admin>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+          Money
+        </button>
+        <button class="nav-item" data-action="nav" data-view="rules">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M9 7h6"/><path d="M9 11h4"/></svg>
+          Rules
+        </button>
+        <button class="nav-item" data-action="nav" data-view="bracket">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.4 6H13a4 4 0 0 1 4 4v0"/><path d="M7.4 18H13a4 4 0 0 0 4-4v0"/></svg>
+          Bracket
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="active-t">
+          <span class="active-t-label">Active tournament</span>
+          <strong id="side-active-name">—</strong>
+          <span class="chip" id="side-active-status" hidden></span>
+        </div>
+        <div class="user-box" id="user-box" hidden>
+          <div class="user-chip">
+            <span class="user-avatar" id="user-avatar" aria-hidden="true">U</span>
+            <span class="user-meta">
+              <strong id="user-name">User</strong>
+              <span id="user-id">—</span>
+            </span>
+          </div>
+          <button type="button" class="logout-btn" id="logout-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <path d="m16 17 5-5-5-5"/>
+              <path d="M21 12H9"/>
+            </svg>
+            Logout
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ======================= MAIN ======================= -->
+    <main class="content">
+      <header class="topbar">
+        <div class="topbar-heading">
+          <h1 id="view-title">Tournament</h1>
+          <p class="topbar-sub" id="view-sub">Create and manage your tournaments.</p>
+        </div>
+        <div class="topbar-actions">
+          <button type="button" class="reset-details-btn" id="reset-details-btn" data-action="reset-details" data-requires-admin title="Reset the current form">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 3-6.7" />
+              <path d="M3 4v6h6" />
+            </svg>
+            Reset Details
+          </button>
+          <label class="select-inline" for="t-select">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            <select id="t-select" aria-label="Active tournament"></select>
+          </label>
+        </div>
+      </header>
+
+      <!-- ============ TOURNAMENTS ============ -->
+      <section class="view active" id="view-tournaments" data-title="Tournament" data-sub="Create and manage your tournaments.">
+        <div class="grid-2">
+          <div class="panel">
+            <div data-requires-admin>
+            <h2 class="panel-title" id="t-form-title">Create tournament</h2>
+            <form id="t-form" class="form" novalidate>
+              <div class="field">
+                <label for="t-name">Tournament name</label>
+                <input id="t-name" type="text" placeholder="e.g. Nova Championship Cup" required />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="t-date">Date</label>
+                  <input id="t-date" type="date" required />
+                </div>
+                <div class="field">
+                  <label for="t-format">Format</label>
+                  <select id="t-format">
+                    <option>Knockout</option>
+                    <option>League</option>
+                    <option>Group + Knockout</option>
+                    <option>Custom</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="t-fee">Entry fee per team (₹)</label>
+                  <input id="t-fee" type="number" min="0" step="1" placeholder="500" />
+                </div>
+                <div class="field">
+                  <label for="t-status">Status</label>
+                  <select id="t-status">
+                    <option>Upcoming</option>
+                    <option>Ongoing</option>
+                    <option>Completed</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-sm" id="t-submit">Create Tournament</button>
+                <button type="button" class="btn btn-ghost btn-sm" id="t-cancel" hidden data-action="cancel-edit-t">Cancel</button>
+              </div>
+            </form>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel-title">All tournaments</h2>
+            <div id="t-list" class="stack"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TEAMS ============ -->
+      <section class="view" id="view-teams" data-title="Teams" data-sub="Add, edit and remove teams. Track registrations and payments.">
+        <div class="grid-2">
+          <div class="panel">
+            <div data-requires-admin>
+            <h2 class="panel-title" id="tm-form-title">Add team</h2>
+            <form id="tm-form" class="form" novalidate>
+              <div class="field">
+                <label for="tm-name">Team name</label>
+                <input id="tm-name" type="text" placeholder="e.g. Thunder Strikers" required />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="tm-captain">Captain</label>
+                  <input id="tm-captain" type="text" placeholder="Captain name" />
+                </div>
+                <div class="field">
+                  <label for="tm-contact">Contact</label>
+                  <input id="tm-contact" type="text" placeholder="Phone or email" />
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-sm" id="tm-submit">Add Team</button>
+                <button type="button" class="btn btn-ghost btn-sm" id="tm-cancel" hidden data-action="cancel-edit-tm">Cancel</button>
+              </div>
+            </form>
+            </div>
+            <div class="mini-note" id="tm-count-note"></div>
+          </div>
+
+          <div class="panel panel-wide">
+            <div class="panel-head">
+              <h2 class="panel-title">Registered teams</h2>
+              <div class="search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="tm-search" type="text" placeholder="Search teams…" aria-label="Search teams" />
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr><th>#</th><th>Team</th><th>Captain</th><th>Contact</th><th>Entry fee</th><th>Actions</th></tr>
+                </thead>
+                <tbody id="tm-rows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MONEY ============ -->
+      <section class="view" id="view-money" data-title="Money" data-sub="Entry fees, payments and expenses for the active tournament.">
+        <div class="stats" id="money-stats"></div>
+
+        <div class="grid-2">
+          <div class="panel panel-wide">
+            <h2 class="panel-title">Team payments</h2>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr><th>Team</th><th>Fee</th><th>Status</th><th>Paid on</th><th>Action</th></tr>
+                </thead>
+                <tbody id="pay-rows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel-title">Expenses</h2>
+            <div data-requires-admin>
+            <form id="ex-form" class="form" novalidate>
+              <div class="field">
+                <label for="ex-label">Expense</label>
+                <input id="ex-label" type="text" placeholder="e.g. Ground booking" required />
+              </div>
+              <div class="field">
+                <label for="ex-amount">Amount (₹)</label>
+                <input id="ex-amount" type="number" min="0" step="1" placeholder="120" required />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-sm">Add Expense</button>
+              </div>
+            </form>
+            </div>
+            <div class="table-wrap">
+              <table class="table table-tight">
+                <thead><tr><th>Expense</th><th>Amount</th><th></th></tr></thead>
+                <tbody id="ex-rows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ RULES ============ -->
+      <section class="view" id="view-rules" data-title="Rules" data-sub="Maintain the rulebook shown to teams and officials.">
+        <div class="grid-2">
+          <div class="panel">
+            <div data-requires-admin>
+            <h2 class="panel-title">Add a rule</h2>
+            <form id="rule-form" class="form" novalidate>
+              <div class="field">
+                <label for="rule-title">Title <span class="opt">(optional)</span></label>
+                <input id="rule-title" type="text" placeholder="e.g. Match timings" />
+              </div>
+              <div class="field">
+                <label for="rule-text">Rule</label>
+                <textarea id="rule-text" rows="4" placeholder="Describe the rule or guideline…" required></textarea>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-sm" id="rule-submit">Add Rule</button>
+                <button type="button" class="btn btn-ghost btn-sm" id="rule-cancel" hidden data-action="cancel-edit-rule">Cancel</button>
+              </div>
+            </form>
+            </div>
+          </div>
+
+          <div class="panel panel-wide">
+            <h2 class="panel-title">Tournament rules</h2>
+            <ol class="rules-list" id="rules-list"></ol>
+            <p class="mini-note" id="rules-empty" hidden>No rules yet — add your first rule on the left.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ BRACKET ============ -->
+      <section class="view" id="view-bracket" data-title="Bracket" data-sub="Build matchups manually: enter team names, pick winners, advance them to the next round.">
+        <div class="panel bracket-toolbar">
+          <div class="chips" id="bracket-chips"></div>
+          <div class="toolbar-actions">
+            <button class="btn btn-ghost btn-sm" data-action="autofill" title="Fill Round 1 slots from the registered teams, in order">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg>
+              Auto-fill Round 1
+            </button>
+            <button class="btn btn-sm" data-action="add-match" data-round="auto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              Add Match
+            </button>
+          </div>
+        </div>
+
+        <div class="champion" id="champion" hidden></div>
+
+        <div class="bracket" id="bracket"></div>
+
+        <datalist id="team-names"></datalist>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast-stack" id="toasts" aria-live="polite"></div>
+
+<script src="../js/auth.js?v=2"></script>
+<script src="../js/dashboard.js?v=8"></script>
+</body>
+</html>
